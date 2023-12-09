@@ -19,6 +19,8 @@ class RoverTeleopNode:
         if msg.buttons[2] == 1 and self.dummyNode is None:
             self.create_dummy_node()
             print("X was pressed and executed")
+            self.publish_twist_msg()
+            
         elif msg.buttons[1] == 1 and self.dummyNode is not None:  
             self.destroy_dummy_node()
             print("B was pressed and executed")
@@ -29,6 +31,10 @@ class RoverTeleopNode:
     def destroy_dummy_node(self):
         self.dummyNode.destroy_node()
         self.dummyNode = None
+
+    def publish_twist_msg(self):
+        # implement variable speed movement here
+        print()
 
 def main(args=None):
     rclpy.init(args=args)
