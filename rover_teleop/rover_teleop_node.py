@@ -44,7 +44,7 @@ class RoverTeleopNode(Node):
         self.dummyNode = None
 
     def publish_twist_msg(self, joy):
-        # implement variable speed movement here
+        # implement variable speed movement here (from reza)
         twist = Twist()
         twist.linear.x = joy.axes[1] + joy.axes[4]
         twist.angular.z = joy.axes[0] + joy.axes[3]
