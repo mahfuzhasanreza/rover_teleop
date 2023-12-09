@@ -1,6 +1,5 @@
 import rclpy
 from sensor_msgs.msg import Joy
-from std_msgs.msg import String
 
 class RoverTeleopNode:
     def __init__(self):
@@ -20,7 +19,7 @@ class RoverTeleopNode:
             self.create_dummy_node()
             print("X was pressed and executed")
             self.publish_twist_msg()
-            
+
         elif msg.buttons[1] == 1 and self.dummyNode is not None:  
             self.destroy_dummy_node()
             print("B was pressed and executed")
