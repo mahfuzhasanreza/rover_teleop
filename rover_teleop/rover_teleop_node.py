@@ -19,7 +19,7 @@ class RoverTeleopNode(Node):
         
         self.dummyNode = None
         self.send_msg = False
-
+        self.send_speed = 0.0
 
     def joy_callback(self, msg):
 
@@ -28,10 +28,18 @@ class RoverTeleopNode(Node):
             self.create_dummy_node()
             print("X was pressed and executed")
 
-        elif msg.buttons[1] == 1 and self.dummyNode is not None:  
+        elif msg.buttons[1] == 1 and self.dummyNode is not None:
             self.send_msg = False
             self.destroy_dummy_node()
             print("B was pressed and executed")
+
+        # for speed ( from mahfuz hasan reza )
+        if msg.buttons[3]:
+            send_speed += 0.2
+            print("SPEED: " + str(1 + send_speed))
+        if msg.buttons[4]:
+            send_speed -= 0.2
+            print("SPEED: " + str(1 - send_speed))
 
         if self.send_msg:
             self.publish_twist_msg(msg)
@@ -46,8 +54,8 @@ class RoverTeleopNode(Node):
     def publish_twist_msg(self, joy):
         # implement variable speed movement here ( from reza )
         twist = Twist()
-        twist.linear.x = joy.axes[1] + joy.axes[4]
-        twist.angular.z = joy.axes[0] + joy.axes[3]
+        twist.linear.x = joy.axes[1] + joy.axes[4] + self.send_speed
+        twist.angular.z = joy.axes[0] + joy.axes[3] + self.send_speed
         self.cmd_vel_publisher.publish(twist)
 
 
