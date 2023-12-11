@@ -87,8 +87,15 @@ class RoverTeleopNode(Node):
         elif self.controller_model ==  "PS4 Controller":
             twist.linear.x = (joy.axes[1]/2) + (joy.axes[4]/2)
             twist.angular.z = (joy.axes[0]/2) + (joy.axes[3]/2)
-            if(joy.axes[0] < 0.17 and joy.axes[0] > -0.17) or (joy.axes[3] < 0.17 and joy.axes[3] > -0.17):
-                twist.angular.z = 0.0
+            # remove velocity bound [ -0.17, 0.17 ]
+            if(joy.axes[0] < 0.17 and joy.axes[0] > -0.17):
+                twist.angular.z -= joy.axes[0]/2
+            if (joy.axes[3] < 0.17 and joy.axes[3] > -0.17):
+                twist.angular.z -= joy.axes[3]/2
+            if(joy.axes[1] < 0.17 and joy.axes[1] > -0.17):
+                twist.linear.x -= joy.axes[1]/2
+            if(joy.axes[4] < 0.17 and joy.axes[4] > -0.17):
+                twist.linear.x -= joy.axes[4]/2
 
         elif self.controller_model ==  "Logitech X-3D Pro":
             if joy.buttons[0]:
