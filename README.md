@@ -12,14 +12,30 @@ Message:
     [Joy]       (docs.ros.org/en/melodic/api/sensor_msgs/html/msg/Joy.html)
     [Twist]     (docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html)
 
+
 Controller:
+
     Xbox-360
+    Button:
+        Joy-stick   rover movement
+        X           enables Manual Mode
+        B           enables Autonomous Mode
+        Note: Use both sticks for full accelerations 
+    
+    PS4
+    Button:
+        Joy-stick   rover movement
+        Square           enables Manual Mode
+        Circle           enables Autonomous Mode
+        Note: Use both sticks for full accelerations
 
-Button:
-    Joy-stick   rover movement
-    X           enables Manual Mode
-    B           enables Autonomous Mode
-
+    Logitech Extreme 3D PRO
+    Button:
+        Joy-stick   rover movement
+        Trigger     emergency brake
+        2           enables Manual Mode
+        3           enables Autonomous Mode
+        Note: Rotate stick on it's origin to perform 360 rotations
 ```
 
 ### Setup
