@@ -9,8 +9,8 @@ Topic:
     /cmd_vel    command velocity
 
 Message:
-    [Joy]       (docs.ros.org/en/melodic/api/sensor_msgs/html/msg/Joy.html)
-    [Twist]     (docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html)
+    [Joy]       https://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/Joy.html
+    [Twist]     https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html
 
 
 Controller:
